@@ -5,9 +5,9 @@ import com.card.app.service.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,14 +33,14 @@ public class CardController {
     }
 
     @PostMapping
-    public ResponseEntity<Card> saveBudget(@Validated @RequestBody Card card) {
+    public ResponseEntity<Card> saveBudget(@Valid @RequestBody Card card) {
         Card savedCard = cardService.saveCard(card);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(savedCard);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Card> editBudget(@PathVariable Long id, @Validated @RequestBody Card card) {
+    public ResponseEntity<Card> editBudget(@PathVariable Long id, @Valid @RequestBody Card card) {
         Card editedCard = cardService.editCard(id, card);
 
         return ResponseEntity.status(HttpStatus.OK).body(editedCard);

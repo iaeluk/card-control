@@ -21,7 +21,7 @@ public class CardService {
     public Card saveCard(Card budget) {
 
         if (!getCard().isEmpty()) {
-            this.editCard(1L, budget);
+            this.editCard(getCard().get(0).getId(), budget);
         } else {
             return cardRepository.save(budget);
         }
@@ -33,14 +33,14 @@ public class CardService {
         return cardRepository.findById(id);
     }
 
-    public Card editCard(Long id, Card budget) {
+    public Card editCard(Long id, Card card) {
         Optional<Card> cardById = this.getCardById(id);
 
         if (cardById.isPresent()) {
-            cardById.get().setCardName(budget.getCardName());
-            cardById.get().setCardImage(budget.getCardImage());
-            cardById.get().setPassword(budget.getPassword());
-            cardById.get().setBudget(budget.getBudget());
+            cardById.get().setCardName(card.getCardName());
+            cardById.get().setCardImage(card.getCardImage());
+            cardById.get().setPassword(card.getPassword());
+            cardById.get().setBudget(card.getBudget());
         }
 
         return cardRepository.save(cardById.get());
