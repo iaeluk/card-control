@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import javax.validation.constraints.NotBlank;
+
 @Entity
 @Getter
 @Setter
@@ -20,10 +22,13 @@ public class Card {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-
+    @NotBlank
     private String cardName;
+    @NotBlank
     private String cardImage;
+    @NotBlank
     private String password;
+    @NotBlank
     private Double budget;
 
     public Card(String cardName, String password, Double budget) {
