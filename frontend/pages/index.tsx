@@ -10,8 +10,8 @@ export default function Home({data}:any) {
 });
 
   return (
-    <div className="bg-[#0e0e0e] min-w-full min-h-screen text-white flex flex-col gap-10 items-center justify-center">
-      <img className="w-56 border rounded-xl bg-white" src={cardImage} alt="Imagem do cartão c6 Bank" />
+    <div className="bg-[#0e0e0e] min-w-full min-h-screen text-white flex flex-col gap-7 items-center justify-center">
+      <img className="w-48 border rounded-xl bg-white" src={cardImage} alt={`Imagem do cartão ${cardName}`} />
       <h1 className="text-2xl font-bold">{cardName}</h1>
       <div className="text-3xl flex flex-col items-center gap-4">
       <span>Senha: {password}</span>
