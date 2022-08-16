@@ -21,11 +21,21 @@ export default function Home({data}:any) {
   )
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const url = process.env.URL || ""
 
-  const res = await fetch(url)
-  const data = await res.json()
+  const data = await fetch(url)
+  .then(res => {
+    if (res.ok) {
+      return res.json()
+    }
+  })
+  .then(res => res)
 
-  return { props: { data } }
+    return { 
+      props: { 
+        data 
+      }, 
+      revalidate: 1 
+    }
 }
